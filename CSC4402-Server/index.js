@@ -8,8 +8,8 @@ const cors = require("cors");
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "Davin%2006",
-  database: "csc4402",
+  password: "",
+  database: "trucker",
 });
 
 app.use(cors());
@@ -25,7 +25,7 @@ app.get("/api/get", (req, res) => {
 app.post("/api/submit", (req, res) => {
   const email = req.body.email;
   const date = req.body.date;
-  const coNum = req.body.columnNumeber;
+  const coNum = req.body.columnNumber;
   const equimentType = req.body.equimentType;
   const originCity = req.body.originCity;
   const originState = req.body.originState;
@@ -54,8 +54,79 @@ app.post("/api/submit", (req, res) => {
     ],
     (err, result) => {
       console.log(err);
+      console.log(result);
     }
   );
+});
+
+app.delete("/api/delete/:UniqueJobId", (req, res) => {
+  const id = req.params.UniqueJobId;
+  const sqlDelete = "DELETE FROM trucks_delivering WHERE UniqueJobId = ?";
+  db.query(sqlDelete, id, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(result);
+      console.log("Deleted Row");
+    }
+  });
+});
+
+app.put("/api/update/:UniqueJobId", (req, res) => {
+  const email = req.body.email;
+  const date = req.body.date;
+  const coNum = req.body.columnNumber;
+  const equimentType = req.body.equimentType;
+  const originCity = req.body.originCity;
+  const originState = req.body.originState;
+  const destinationCity = req.body.destinationCity;
+  const destinationState = req.body.destinationState;
+  const miles = req.body.miles;
+  const truckCost = req.body.truckCost;
+  const type = req.body.type;
+  const UniqueJobId = req.params.UniqueJobId;
+
+  const sqlUpdate =
+    "UPDATE trucks_delivering SET Email = ?, DateAvailable = ?, CoNumber = ?, EquipmentType = ?, OriginCity = ?, OriginState=?, DestinationCity = ?, DestinationState = ?, Miles = ?, TruckCost = ?, Type = ? WHERE UniqueJobId = ?";
+  db.query(
+    sqlUpdate,
+    [
+      email,
+      date,
+      coNum,
+      equimentType,
+      originCity,
+      originState,
+      destinationCity,
+      destinationState,
+      miles,
+      truckCost,
+      type,
+      UniqueJobId,
+    ],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+      }
+    }
+  );
+});
+
+app.put("/api/update/:UniqueJobId", (req, res) => {
+  const email = req.body.email;
+  const UniqueJobId = req.params.UniqueJobId;
+
+  const sqlUpdate =
+    "UPDATE trucks_delivering SET Email = ? WHERE UniqueJobId = ?";
+  db.query(sqlUpdate, [email, UniqueJobId], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(result);
+    }
+  });
 });
 
 app.listen(3001, () => {
