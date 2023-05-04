@@ -6,24 +6,43 @@ import {
 	Navigate,
 } from "react-router-dom";
 import LoadTablePage from "./pages/LoadTablePage";
-import Profile from "./pages/Profile.js";
+import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
-import About from "./pages/About";
+import Profile from "./pages/Profile";
 
 function App() {
+
+	let component
+
+	switch (window.location.pathname){
+		case"/":
+		component = <Home />
+		break
+		case "/LoadBoard":
+		component = <LoadTablePage />
+		break
+		case "/Login":
+		component = <Login />
+		break
+		case "/Profile":
+		component = <Profile />
+		break
+	}
 	return (
 		<>
-			<div className="page">
-				<Router>
-					<Routes>
-						<Route path="/Login" element={<Login />} />
-						<Route path="/LoadBoard" element={<LoadTablePage />} />
-						<Route path="/Profile" element={<Profile />} />
-						<Route path="/About" element={<About />} />
-						<Route path="/" element={<Navigate replace to="/Login" />} />
-					</Routes>
-				</Router>
+			<Navbar />
+			<div className="App">
+				{component}
 			</div>
+
+			{/*<div className="page">*/}
+			{/*	<Router>*/}
+			{/*		<Routes>*/}
+			{/*			<Route index element={<Home />} />\*/}
+			{/*			<Route path="/LoadBoard" element={<LoadTablePage />} />*/}
+			{/*		</Routes>*/}
+			{/*	</Router>*/}
+			{/*</div>*/}
 		</>
 	);
 }
