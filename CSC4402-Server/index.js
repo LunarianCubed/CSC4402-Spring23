@@ -104,10 +104,13 @@ app.put("/api/update/:UniqueJobId", (req, res) => {
       type,
       UniqueJobId,
     ],
-    (err, result) => {
+    (err, result, res, req) => {
       if (err) {
         console.log(err);
       } else {
+        console.log(err);
+        console.log(res);
+        console.log(req);
         console.log(result);
       }
     }
