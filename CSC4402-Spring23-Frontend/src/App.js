@@ -8,6 +8,7 @@ import {
 import LoadTablePage from "./pages/LoadTablePage";
 import Profile from "./pages/Profile.js";
 import Login from "./pages/Login";
+import About from "./pages/About";
 
 function App() {
 	return (
@@ -18,7 +19,7 @@ function App() {
 						<Route path="/Login" element={<Login />} />
 						<Route path="/LoadBoard" element={<LoadTablePage />} />
 						<Route path="/Profile" element={<Profile />} />
-						<Route path="/About" element={<LoadTablePage />} />
+						<Route path="/About" element={<About />} />
 						<Route path="/" element={<Navigate replace to="/Login" />} />
 					</Routes>
 				</Router>

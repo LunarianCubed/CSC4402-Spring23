@@ -13,7 +13,7 @@ function Navbar() {
 						<li>
 							<Link to="/LoadBoard" className="navbar-logo" id="navbarItem">
 								<img src="/zetong-li-mVqTumQH-c0-unsplash.jpg" alt="Trucker" />
-								TigerTruck
+								Tiger Trucking
 							</Link>
 						</li>
 						<div />
