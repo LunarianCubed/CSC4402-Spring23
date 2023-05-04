@@ -1,6 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	Navigate,
+} from "react-router-dom";
 import LoadTablePage from "./pages/LoadTablePage";
 import Navbar from "./components/Navbar";
 import Login from "./pages/Login";

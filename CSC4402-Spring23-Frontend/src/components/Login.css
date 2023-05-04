@@ -1,0 +1,27 @@
+.login-container {
+	display: flex;
+	flex-direction: column;
+	padding-top: 10em;
+	margin-top: -20px;
+	align-items: center;
+}
+
+.form-container {
+	margin-top: 10%;
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+	background-color: rgb(164, 106, 197);
+	width: 300px;
+	border: 2px solid #461d7c;
+	border-radius: 10px;
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+}
+
+.field label {
+	color: #fdd023;
+}
