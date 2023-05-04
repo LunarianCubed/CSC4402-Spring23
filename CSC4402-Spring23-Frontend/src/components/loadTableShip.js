@@ -6,7 +6,6 @@ import axios from "axios";
 function LoadTableShip() {
 	const [email, setEmail] = useState("");
 	const [date, setDate] = useState("");
-	const [columnNumber, setColumnNumber] = useState("");
 	const [equimentType, setEquimentType] = useState("");
 	const [originCity, setOriginCity] = useState("");
 	const [originState, setOriginState] = useState("");
@@ -27,7 +26,6 @@ function LoadTableShip() {
 		Axios.post("http://localhost:3001/api/submit", {
 			email: email,
 			date: date,
-			columnNumber: columnNumber,
 			equimentType: equimentType,
 			originCity: originCity,
 			originState: originState,
@@ -46,107 +44,100 @@ function LoadTableShip() {
 				<h1>Load Board</h1>
 				<h3>Shipper</h3>
 				<h2>Create New Post</h2>
-				<form className="submission">
-					<input
-						type="text"
-						name="email"
-						onChange={(e) => {
-							setEmail(e.target.value);
-						}}
-						required="requried"
-						placeholder="Input Email"
-					/>
-					<input
-						type="date"
-						name="date"
-						onChange={(e) => {
-							setDate(e.target.value);
-						}}
-						required="requried"
-						placeholder="Date"
-					/>
-					<input
-						type="number"
-						name="columnNumber"
-						onChange={(e) => {
-							setColumnNumber(e.target.value);
-						}}
-						required="requried"
-						placeholder="Column Number"
-					/>
-					<input
-						type="text"
-						name="equimentType"
-						onChange={(e) => {
-							setEquimentType(e.target.value);
-						}}
-						required="requried"
-						placeholder="Equiment Type"
-					/>
-					<input
-						type="text"
-						name="originCity"
-						onChange={(e) => {
-							setOriginCity(e.target.value);
-						}}
-						required="requried"
-						placeholder="Origin City"
-					/>
-					<input
-						type="text"
-						name="originState"
-						onChange={(e) => {
-							setOriginState(e.target.value);
-						}}
-						required="requried"
-						placeholder="Origin State"
-					/>
-					<input
-						type="text"
-						name="destinationCity"
-						onChange={(e) => {
-							setDestinationCity(e.target.value);
-						}}
-						required="requried"
-						placeholder="Destination City"
-					/>
-					<input
-						type="text"
-						name="destinationState"
-						onChange={(e) => {
-							setDestinationState(e.target.value);
-						}}
-						required="requried"
-						placeholder="Destination State"
-					/>
-					<input
-						type="Number"
-						name="miles"
-						onChange={(e) => {
-							setMiles(e.target.value);
-						}}
-						required="requried"
-						placeholder="Miles"
-					/>
+				<form>
+					<div className="submission">
+						<input
+							type="text"
+							name="email"
+							onChange={(e) => {
+								setEmail(e.target.value);
+							}}
+							required="requried"
+							placeholder="Input Email"
+						/>
+						<input
+							type="date"
+							name="date"
+							onChange={(e) => {
+								setDate(e.target.value);
+							}}
+							required="requried"
+							placeholder="Date"
+						/>
+						<input
+							type="text"
+							name="equimentType"
+							onChange={(e) => {
+								setEquimentType(e.target.value);
+							}}
+							required="requried"
+							placeholder="Equiment Type"
+						/>
+						<input
+							type="text"
+							name="originCity"
+							onChange={(e) => {
+								setOriginCity(e.target.value);
+							}}
+							required="requried"
+							placeholder="Origin City"
+						/>
+						<input
+							type="text"
+							name="originState"
+							onChange={(e) => {
+								setOriginState(e.target.value);
+							}}
+							required="requried"
+							placeholder="Origin State"
+						/>
+						<input
+							type="text"
+							name="destinationCity"
+							onChange={(e) => {
+								setDestinationCity(e.target.value);
+							}}
+							required="requried"
+							placeholder="Destination City"
+						/>
+						<input
+							type="text"
+							name="destinationState"
+							onChange={(e) => {
+								setDestinationState(e.target.value);
+							}}
+							required="requried"
+							placeholder="Destination State"
+						/>
+						<input
+							type="Number"
+							name="miles"
+							onChange={(e) => {
+								setMiles(e.target.value);
+							}}
+							required="requried"
+							placeholder="Miles"
+						/>
 
-					<input
-						type="Number"
-						name="truckCost"
-						onChange={(e) => {
-							setTruckCost(e.target.value);
-						}}
-						required="requried"
-						placeholder="Load Cost"
-					/>
-					<input
-						type="text"
-						name="type"
-						onChange={(e) => {
-							setType(e.target.value);
-						}}
-						required="requried"
-						placeholder="Type Ex.Broker"
-					/>
+						<input
+							type="Number"
+							name="truckCost"
+							onChange={(e) => {
+								setTruckCost(e.target.value);
+							}}
+							required="requried"
+							placeholder="Load Cost"
+						/>
+						<input
+							type="text"
+							name="type"
+							onChange={(e) => {
+								setType(e.target.value);
+							}}
+							required="requried"
+							placeholder="Type Ex.Broker"
+						/>
+					</div>
 					<button onClick={submitJob}>Add</button>
 				</form>
 				<table>
@@ -154,7 +145,6 @@ function LoadTableShip() {
 						<tr>
 							<th>Email</th>
 							<th>Date Available</th>
-							<th>Column Number</th>
 							<th>Equiment Type</th>
 							<th>Origin City</th>
 							<th>Origin State</th>
@@ -171,7 +161,6 @@ function LoadTableShip() {
 								<tr>
 									<td>{val.Email}</td>
 									<td>{val.DateAvailable}</td>
-									<td>{val.CoNumber}</td>
 									<td>{val.EquipmentType}</td>
 									<td>{val.OriginCity}</td>
 									<td>{val.OriginState}</td>

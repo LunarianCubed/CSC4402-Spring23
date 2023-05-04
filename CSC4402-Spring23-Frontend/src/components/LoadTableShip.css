@@ -57,6 +57,12 @@ button {
 }
 
 input {
-	width: 150px;
+	width: 130px;
 	margin-left: 10px;
+}
+
+.submission {
+	display: flex;
+	justify-content: center;
+	height: 25px;
 }

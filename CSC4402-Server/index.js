@@ -12,6 +12,13 @@ const db = mysql.createPool({
 	database: "trucker",
 });
 
+const users = mysql.createPool({
+	host: "localhost",
+	user: "root",
+	password: "rootroot",
+	database: "users",
+});
+
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,10 +29,25 @@ app.get("/api/get", (req, res) => {
 		res.send(result);
 	});
 });
+app.get("/api/login", (req, res) => {
+	const sqlSelect = "SELECT * FROM user_data ";
+	users.query(sqlSelect, (err, result) => {
+		res.send(result);
+	});
+});
+
+app.post("/api/signup", (req, res) => {
+	const email = req.body.email;
+	const pass = req.body.pass;
+	const sqlInsert = "INSERT INTO user_data (Email,Password) VALUES (?,?)";
+	users.query(sqlInsert, [email, pass], (err, result) => {
+		console.log(err);
+	});
+});
+
 app.post("/api/submit", (req, res) => {
 	const email = req.body.email;
 	const date = req.body.date;
-	const coNum = req.body.columnNumeber;
 	const equimentType = req.body.equimentType;
 	const originCity = req.body.originCity;
 	const originState = req.body.originState;
@@ -36,13 +58,12 @@ app.post("/api/submit", (req, res) => {
 	const type = req.body.type;
 
 	const sqlInsert =
-		"INSERT INTO trucks_delivering (Email,DateAvailable,CoNumber,EquipmentType,OriginCity,OriginState,DestinationCity,DestinationState,Miles,TruckCost,Type) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		"INSERT INTO trucks_delivering (Email,DateAvailable,EquipmentType,OriginCity,OriginState,DestinationCity,DestinationState,Miles,TruckCost,Type) VALUES (?,?,?,?,?,?,?,?,?,?)";
 	db.query(
 		sqlInsert,
 		[
 			email,
 			date,
-			coNum,
 			equimentType,
 			originCity,
 			originState,
