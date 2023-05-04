@@ -14,14 +14,22 @@ function Navbar() {
                 TigerTruck
               </Link>
             </li>
-            <li className="home">
-              <Link to="/">Home</Link>
-            </li>
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
             <li className="about">
               <Link to="/about">About</Link>
             </li>
-            <li className="profile">
-              <Link to="/profile">
+            <li>
+              <Link to="/profile" className="profile">
                 Profile
                 <img
                   className="userPic"
